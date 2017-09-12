@@ -5,8 +5,10 @@
     "\\src",
     "\\src\\app",
     "\\src\\assets",
-    "\\src\\assets\\data"
+    "\\src\\assets\\data",
+    "\\src\\pages",
+    "\\src\\pages\\home"
   ],
-  "SelectedNode": "\\package.json",
+  "SelectedNode": "\\src\\pages\\home\\home.ts",
   "PreviewInSolutionExplorer": false
 }
