@@ -3,16 +3,31 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title>British Comics of the 60's - 80's</ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <ion-item-group>
+    <ion-item-divider color="light">XML</ion-item-divider>
+    <ion-item *ngFor="let item of xmlItems">
+      {{ item.title }}
+    </ion-item>
+  </ion-item-group>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
 
-  <button ion-button secondary menuToggle>Toggle Menu</button>
+  <ion-item-group>
+    <ion-item-divider color="light">CSV</ion-item-divider>
+    <ion-item *ngFor="let item of csvItems">
+      {{ item.title }}
+    </ion-item>
+  </ion-item-group>
+
+
+  <ion-item-group>
+    <ion-item-divider color="light">TSV</ion-item-divider>
+    <ion-item *ngFor="let item of tsvItems">
+      {{ item.title }}
+    </ion-item>
+  </ion-item-group>
 </ion-content>

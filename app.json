@@ -1,0 +1,7 @@
+{
+  "name": "CompareGenius",
+  "description": "Price comparison",
+  "repository": "https://github.com/dijkie73/comparegenius-admin",
+  "logo": "http://ionicframework.com/img/ionic-logo-blog.png",
+  "keywords": [ "compareGenius", "price comparison" ]
+}
