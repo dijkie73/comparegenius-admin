@@ -1,11 +1,10 @@
 {
   "ExpandedNodes": [
     "",
-    "\\src",
-    "\\src\\assets\\data",
-    "\\src\\pages\\home",
-    "\\src\\providers\\firebase"
+    "\\env",
+    "\\src\\assets",
+    "\\src\\assets\\data"
   ],
-  "SelectedNode": "\\server.js",
+  "SelectedNode": "\\package.json",
   "PreviewInSolutionExplorer": false
 }

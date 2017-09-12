@@ -6,6 +6,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 import { HomePage } from '../pages/home/home';
 import { ListPage } from '../pages/list/list';
 
+declare const ENV: any;
+
 @Component({
   templateUrl: 'app.html'
 })
@@ -25,6 +27,7 @@ export class MyApp {
       { title: 'List', component: ListPage }
     ];
 
+    console.log('isProduction : ' + ENV.PRODUCTION);
   }
 
   initializeApp() {
