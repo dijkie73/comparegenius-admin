@@ -11,18 +11,10 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
 import { AngularFireModule } from 'angularfire2';
+import { firebaseConfig } from '../environment';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 import { FirebaseProvider } from '../providers/firebase/firebase';
-
-export const firebaseConfig = {
-    apiKey: "AIzaSyDcIugdHD83A0O3HUuCmyW1pHPzrmnJclA",
-    authDomain: "comparegenius-pk.firebaseapp.com",
-    databaseURL: "https://comparegenius-pk.firebaseio.com",
-    projectId: "comparegenius-pk",
-    storageBucket: "comparegenius-pk.appspot.com",
-    messagingSenderId: "761706543705"
-};
 
 @NgModule({
   declarations: [

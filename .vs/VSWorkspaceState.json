@@ -2,6 +2,8 @@
   "ExpandedNodes": [
     "",
     "\\env",
+    "\\src",
+    "\\src\\app",
     "\\src\\assets",
     "\\src\\assets\\data"
   ],
