@@ -4,6 +4,10 @@ import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 import * as xml2js from 'xml2js';
 import { AngularFireDatabase, FirebaseListObservable } from 'angularfire2/database';
+
+import { AngularFireAuth } from 'angularfire2/auth';
+import * as firebase from 'firebase/app';
+
 import { DarazProduct } from '../../store';
 import { FirebaseProvider } from '../../providers/firebase/firebase';
 import * as XmlSplit from 'xmlsplit';
@@ -18,6 +22,8 @@ export class HomePage {
     public csvItems: any;
     public tsvItems: any;
 
+    displayName;
+
     public items: FirebaseListObservable<DarazProduct[]> = null;
     public newProd: FirebaseListObservable<DarazProduct>;
 
@@ -27,21 +33,49 @@ export class HomePage {
 
     constructor(public navCtrl: NavController,
                 public db: AngularFireDatabase,
+                private afAuth: AngularFireAuth,
                 public http: Http) {
 
-        this.firebaseProvider = new FirebaseProvider(db);
+        this.afAuth.authState.subscribe(user => {
+              if (!user) {
+                  this.displayName = null;
+                  return;
+              }
+            
+              this.displayName = user.displayName;
 
-        //this.newProduct = new DarazProduct();
-        //this.newProduct.productId = 'A2';
-        //this.newProduct.brand = 'Samsung';
+              this.firebaseProvider = new FirebaseProvider(db);
 
-        //this.firebaseProvider.createDarazProduct(this.newProduct);
+              //this.newProduct = new DarazProduct();
+              //this.newProduct.productId = 'A2';
+              //this.newProduct.brand = 'Samsung';
 
-        //this.items = db.list('/productfeeds/daraz-product-feed');
+              //this.firebaseProvider.createDarazProduct(this.newProduct);
+
+              this.items = db.list('/product-feeds/daraz-product-feed');
+          },
+            error => {
+                console.log('error catched');
+              console.log(error);
+              // handle/report the error
+          }
+        );
+    }
+    signInWithFacebook() {
+        this.afAuth.auth
+            .signInWithPopup(new firebase.auth.FacebookAuthProvider())
+            .then(res => console.log(res));
+    }
+
+    signOut() {
+        this.firebaseProvider = null;
+        this.items = null;
+        this.afAuth.auth.signOut();
     }
 
     ionViewWillEnter() {
-        this.loadXML(this.firebaseProvider);
+ 
+        //this.loadXML(this.firebaseProvider);
         this.loadCSV();
         this.loadTSV();
         
@@ -61,7 +95,7 @@ export class HomePage {
         //})
     }
     loadXML(firebaseProvider: FirebaseProvider) {
-        this.http.get('/assets/data/productdata_29.xml')
+        this.http.get('/assets/data/daraz-feed.xml')
             .map(res => res.text())
             .subscribe((data) => {
                 this.parseXML(data, firebaseProvider)

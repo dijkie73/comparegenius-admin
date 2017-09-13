@@ -8,6 +8,18 @@
 </ion-header>
 
 <ion-content padding>
+  <h1>Hello {{displayName}}</h1>
+
+  <button ion-button outline (click)="signInWithFacebook()">Login</button>
+  <button ion-button outline (click)="signOut()">Logout</button>
+
+  <ion-item-group>
+    <ion-item-divider color="light">Firebase</ion-item-divider>
+    <ion-item class="text" *ngFor="let item of items | async">
+      {{item.productName}}
+    </ion-item>
+  </ion-item-group>
+
   <ion-item-group>
     <ion-item-divider color="light">XML</ion-item-divider>
     <ion-item *ngFor="let item of xmlItems">

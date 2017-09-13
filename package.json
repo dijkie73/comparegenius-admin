@@ -11,7 +11,8 @@
     "ionic:build": "ionic-app-scripts build",
     "ionic:serve": "ionic-app-scripts serve",
     "start": "cross-env NODE_ENV=prod node ./server.js",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "check": "node ./node_modules/npm-check/bin/cli.js -u"
   },
   "config": {
     "ionic_webpack": "./webpack.envars.js"
@@ -46,7 +47,8 @@
     "zone.js": "0.8.12"
   },
   "devDependencies": {
-    "webpack": "^3.5.6"
+    "webpack": "^3.5.6",
+    "npm-check": "5.4.5"
   },
   "engines": {
     "node": "8.4.0",
